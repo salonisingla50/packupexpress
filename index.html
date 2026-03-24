@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PackUp EXPRESS | Relocation Evolved</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy: #1B365D; --orange: #F38B3C; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .text-navy { color: var(--navy); }
+        .bg-navy { background-color: var(--navy); }
+        .text-orange { color: var(--orange); }
+        .bg-orange { background-color: var(--orange); }
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .service-card:hover, .blog-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .shadow-soft { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); }
+
+.animate-truck-top {
+    display: block !important;
+    animation: driveAcrossTop 5s linear forwards;
+}
+
+.animate-truck {
+    display: block !important;
+    animation: driveAcross 4s linear forwards;
+}
+    </style>
+</head>
+<a href="https://wa.me/919877689137?text=Hi!" 
+       target="_blank" 
+       class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-90 animate-bounce-slow"
+       title="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp text-4xl"></i>
+        <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span>
+    </a>
+
+    <style>
+        /* Custom Animation for a gentle 'popping' float */
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 3s infinite ease-in-out;
+        }
+    </style>
+<body class="bg-slate-50">
+
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto glass-nav rounded-2xl px-8 py-4 flex justify-between items-center shadow-soft border border-white">
+            <div class="flex items-center z-[10]">
+                <img src="logorm.png" alt="PackUp Express" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-105">
+            </div>
+            <div class="hidden lg:flex space-x-10 font-bold text-slate-800">
+                <a href="#home" class="hover:text-orange transition">Home</a>
+                <a href="#services" class="hover:text-orange transition">Services</a>
+                <a href="#about" class="hover:text-orange transition">About</a>
+                <a href="#blog" class="hover:text-orange transition">Blog</a>
+                <a href="#help" class="hover:text-orange transition">Help</a>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="https://youtube.com/@yourhandle" target="_blank" 
+                   class="text-[#FF0000] hover:text-[#D90000] transition-transform transform hover:scale-125 text-4xl">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <button class="bg-navy text-white px-8 py-3 rounded-xl font-extrabold hover:bg-orange transition-colors">
+                   Start Moving
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-40 pb-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="bg-white p-8 lg:p-10 rounded-[2.5rem] shadow-2xl border border-slate-100">
+                <h2 class="text-3xl font-extrabold text-navy mb-2">Get in Touch</h2>
+                <p class="text-slate-500 mb-8 font-medium">Book premium movers in 60 seconds.</p>
+                <form id="contactForm" class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" name="name" placeholder="Your Name" required 
+                            class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-orange outline-none transition">
+                        <input type="tel" name="phone" placeholder="Phone Number" required 
+                            class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-orange outline-none transition">
+                    </div>
+                    <input type="text" name="from" placeholder="Moving From (City)" required 
+                        class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-orange outline-none transition">
+                    <input type="text" name="to" placeholder="Moving To (City)" required 
+                        class="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-orange outline-none transition">
+                    
+                    <button type="submit" id="submitBtn"
+                        class="w-full bg-navy text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-orange transition-all shadow-lg transform active:scale-95">
+                        Request a Quote
+                    </button>
+                </form>
+            </div>
+            <div>
+                <img src="handshake.png" class="rounded-[2.5rem] shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="text-orange font-bold uppercase tracking-widest text-sm">Our Services</span>
+            <h2 class="text-5xl font-extrabold text-navy mt-4 mb-16">What We Offer</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-10 rounded-3xl service-card transition-all duration-300 shadow-soft">
+                    <div class="w-16 h-16 bg-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-8"><i class="fas fa-home text-2xl text-orange"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-4">Residential Moving</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Safe and hassle-free relocation for you and your family to your new home.</p>
+                </div>
+                <div class="bg-white p-10 rounded-3xl service-card transition-all duration-300 shadow-soft">
+                    <div class="w-16 h-16 bg-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-8"><i class="fas fa-building text-2xl text-orange"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-4">Commercial Moving</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Efficient office relocations to minimize downtime for your business.</p>
+                </div>
+                <div class="bg-white p-10 rounded-3xl service-card transition-all duration-300 shadow-soft">
+                    <div class="w-16 h-16 bg-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-8"><i class="fas fa-box text-2xl text-orange"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-4">Packing Services</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Professional packing using high-quality materials for your items.</p>
+                </div>
+                <div class="bg-white p-10 rounded-3xl service-card transition-all duration-300 shadow-soft">
+                    <div class="w-16 h-16 bg-orange/10 rounded-2xl flex items-center justify-center mx-auto mb-8"><i class="fas fa-truck text-2xl text-orange"></i></div>
+                    <h3 class="text-xl font-bold text-navy mb-4">Transport Services</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed mb-6">Modern fleet of vehicles ensuring secure transportation of belongings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-navy relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-blue-400 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-orange rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-orange font-bold uppercase tracking-widest text-sm">Our Network</span>
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-white mt-4">Regional Branches</h2>
+                <div class="w-24 h-1 bg-orange mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-md p-10 rounded-[2.5rem] border border-white/20 hover:bg-white/15 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-orange rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-map-marker-alt text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3 italic tracking-wide">Mumbai</h4>
+                    <p class="text-blue-100/80 text-sm leading-relaxed">Central Hub, Logistics Park,<br>Sector 12, Navi Mumbai</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md p-10 rounded-[2.5rem] border border-white/20 hover:bg-white/15 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-orange rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-city text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3 italic tracking-wide">Delhi NCR</h4>
+                    <p class="text-blue-100/80 text-sm leading-relaxed">North Region Office,<br>Okhla Estate, New Delhi</p>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md p-10 rounded-[2.5rem] border border-white/20 hover:bg-white/15 transition-all duration-300 group">
+                    <div class="w-12 h-12 bg-orange rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-warehouse text-white"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-white mb-3 italic tracking-wide">Bangalore</h4>
+                    <p class="text-blue-100/80 text-sm leading-relaxed">South Ops Center,<br>Whitefield, Bangalore</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+            <div class="lg:w-1/2">
+                <span class="text-orange font-bold tracking-widest text-sm uppercase">ESTD 2026</span>
+                <h2 class="text-5xl lg:text-6xl font-extrabold text-navy mt-4 mb-8 leading-tight">We don't just move boxes. <span class="text-orange italic">We move memories.</span></h2>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed">PackUp EXPRESS was born from a simple frustration: why is moving so stressful? We've combined hardware-grade security with software-grade simplicity.</p>
+                <div class="grid grid-cols-2 gap-10">
+                    <div><div class="text-4xl font-extrabold text-navy mb-2">99.9%</div><p class="text-xs font-bold text-slate-400 uppercase tracking-widest">On-Time Delivery</p></div>
+                    <div><div class="text-4xl font-extrabold text-navy mb-2">24/7</div><p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Live Ops Support</p></div>
+                </div>
+            </div>
+            <div class="lg:w-1/2 relative group">
+                <img src="about.png" alt="PackUp Express" class="rounded-[3rem] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-orange/10 rounded-full -z-10 blur-2xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-5xl font-extrabold text-navy mb-4">Latest Insights</h2>
+                    <p class="text-slate-500 text-lg">Tips and tricks for a smoother move.</p>
+                </div>
+                <a href="blogs.html" class="bg-navy text-white px-8 py-4 rounded-2xl font-bold hover:bg-orange transition shadow-lg">
+                    View All Blogs <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            
+            <div id="blog-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <p class="text-center col-span-full py-20 text-slate-400 animate-pulse">Loading latest stories...</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- <script src="script.js"></script> -->
+
+    <section id="help" class="py-24 px-6 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-navy text-center mb-16 uppercase tracking-tight">Help Center</h2>
+            <div class="space-y-6">
+                <div class="bg-slate-50 p-8 rounded-2xl border-l-8 border-navy shadow-soft hover:bg-blue-50 transition-colors duration-300 group">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h4 class="font-bold text-navy text-xl mb-2 group-hover:text-orange transition-colors">How do I track my order?</h4>
+                            <p class="text-slate-600 leading-relaxed">You can track your driver in real-time via the "Track Order" tab using your booking ID.</p>
+                        </div>
+                        <div class="text-orange opacity-50 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl border-l-8 border-navy shadow-soft hover:bg-blue-50 transition-colors duration-300 group">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h4 class="font-bold text-navy text-xl mb-2 group-hover:text-orange transition-colors">Are there any hidden charges?</h4>
+                            <p class="text-slate-600 leading-relaxed">No. The price shown at the time of booking is what you pay, inclusive of taxes.</p>
+                        </div>
+                        <div class="text-orange opacity-50 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl border-l-8 border-navy shadow-soft hover:bg-blue-50 transition-colors duration-300 group">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h4 class="font-bold text-navy text-xl mb-2 group-hover:text-orange transition-colors">What if my items are damaged?</h4>
+                            <p class="text-slate-600 leading-relaxed">We offer insurance for all "Packers & Movers" bookings. Contact support within 24 hours.</p>
+                        </div>
+                        <div class="text-orange opacity-50 group-hover:opacity-100 transition-opacity">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-navy text-white pt-24 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-20 gap-8">
+                <h2 class="text-4xl font-bold">Ready to Make Your Move?</h2>
+                <button class="bg-slate-500/30 border border-white/20 text-white px-10 py-4 rounded-xl font-bold hover:bg-white hover:text-navy transition">
+                    Contact Us Now
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-t border-white/10 pt-16">
+                <div>
+                    <div class="text-2xl font-black mb-6 italic">PackUp <span class="text-orange">Express</span></div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">Your trusted partner for safe, fast, and reliable moving services. We handle your belongings with the utmost care.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-orange rounded-full flex items-center justify-center hover:scale-110 transition"><i class="fab fa-facebook-f text-white"></i></a>
+                        <a href="#" class="w-10 h-10 bg-orange rounded-full flex items-center justify-center hover:scale-110 transition"><i class="fab fa-twitter text-white"></i></a>
+                        <a href="#" class="w-10 h-10 bg-orange rounded-full flex items-center justify-center hover:scale-110 transition"><i class="fab fa-instagram text-white"></i></a>
+                        <a href="https://youtube.com/@yourhandle" target="_blank" class="w-10 h-10 bg-orange rounded-full flex items-center justify-center hover:scale-110 transition">
+                            <i class="fab fa-youtube text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 uppercase text-sm tracking-widest text-orange">Quick Links</h5>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="#home" class="hover:text-white">Home</a></li>
+                        <li><a href="#about" class="hover:text-white">About Us</a></li>
+                        <li><a href="#services" class="hover:text-white">Services</a></li>
+                        <li><a href="#blog" class="hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 uppercase text-sm tracking-widest text-orange">Our Services</h5>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="#" class="hover:text-white">Residential Moving</a></li>
+                        <li><a href="#" class="hover:text-white">Commercial Moving</a></li>
+                        <li><a href="#" class="hover:text-white">Packing & Unpacking</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6 uppercase text-sm tracking-widest text-orange">Contact Info</h5>
+                    <ul class="space-y-6 text-slate-400 text-sm">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-4 text-orange"></i><span>123 Moving Avenue, Logistics Park, NY 10001</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-4 text-orange"></i><span>+91 98776 89137</span></li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-4 text-orange"></i><span>info@packupexpress.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-20 pt-8 border-t border-white/5 text-center text-slate-500 text-xs font-bold uppercase tracking-[0.3em]">
+                &copy; 2026 PackUp Express Logistics. Relocation Reimagined.
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

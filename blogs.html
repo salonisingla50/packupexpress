@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PackUp Insights | Full Blog Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy: #1B365D; --orange: #F38B3C; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .text-navy { color: var(--navy); }
+        .bg-navy { background-color: var(--navy); }
+        .text-orange { color: var(--orange); }
+        .shadow-soft { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <nav class="fixed w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto bg-white/80 backdrop-blur-md rounded-2xl px-8 py-4 flex justify-between items-center shadow-soft border border-white">
+            <a href="index.html" class="flex items-center">
+                <img src="logo.png" alt="Logo" class="h-10">
+            </a>
+            <a href="index.html" class="text-navy font-bold hover:text-orange transition">← Back to Home</a>
+        </div>
+    </nav>
+
+    <section class="pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h1 class="text-6xl font-black text-navy mb-4">PackUp Insights</h1>
+                <p class="text-slate-500 text-xl">The complete library of relocation guides and company news.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-[2.5rem] shadow-soft border border-slate-100 mb-16 flex flex-col md:flex-row gap-6 items-center">
+                <div class="relative flex-1 w-full">
+                    <i class="fas fa-search absolute left-6 top-1/2 -translate-y-1/2 text-slate-300"></i>
+                    <input type="text" id="blogSearch" placeholder="Search by title or category..." 
+                        class="w-full pl-14 pr-6 py-4 bg-slate-50 rounded-2xl outline-none focus:ring-2 focus:ring-orange/20 transition">
+                </div>
+            </div>
+
+            <div id="full-blog-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                </div>
+        </div>
+    </section>
+
+    <div id="blogModal" class="fixed inset-0 z-[200] hidden bg-navy/90 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-[2.5rem] p-8 md:p-12 relative shadow-2xl">
+            <button onclick="closeBlog()" class="fixed top-6 right-6 bg-white w-12 h-12 rounded-full shadow-xl flex items-center justify-center text-navy hover:text-orange transition z-10">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <img id="modalImg" src="" class="w-full h-80 object-cover rounded-3xl mb-10 shadow-lg">
+            <span id="modalCategory" class="text-orange font-black text-xs uppercase tracking-[0.2em]"></span>
+            <h3 id="modalTitle" class="text-4xl font-black text-navy mt-4 mb-8 leading-tight"></h3>
+            <div id="modalBody" class="text-slate-600 text-lg leading-relaxed space-y-6"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
