@@ -1,0 +1,62 @@
+:root { 
+    --navy: #1B365D; 
+    --orange: #F38B3C; 
+}
+
+body { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+    scroll-behavior: smooth; 
+}
+
+/* Custom Colors */
+.text-navy { color: var(--navy); }
+.bg-navy { background-color: var(--navy); }
+.text-orange { color: var(--orange); }
+.bg-orange { background-color: var(--orange); }
+
+/* Navigation Glassmorphism */
+.glass-nav { 
+    background: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px); 
+}
+
+/* Hover Effects */
+.service-card:hover, .blog-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+}
+
+.shadow-soft { 
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); 
+}
+
+/* WhatsApp Floating Animation */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(-8px); }
+  50% { transform: translateY(0); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s ease-in-out infinite;
+}
+
+/* Truck Animation Logic (Currently Unused in HTML) */
+@keyframes drive-by {
+    0% { transform: translateX(-150%) scaleX(1); }
+    50% { transform: translateX(0%) scaleX(1); }
+    100% { transform: translateX(150%) scaleX(1); }
+}
+
+.hero-truck-bg {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    font-size: 8rem;
+    opacity: 0.05;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: -1;
+    animation: drive-by 15s linear infinite;
+}

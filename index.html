@@ -7,52 +7,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --navy: #1B365D; --orange: #F38B3C; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .text-navy { color: var(--navy); }
-        .bg-navy { background-color: var(--navy); }
-        .text-orange { color: var(--orange); }
-        .bg-orange { background-color: var(--orange); }
-        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-        .service-card:hover, .blog-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .shadow-soft { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); }
-
-.animate-truck-top {
-    display: block !important;
-    animation: driveAcrossTop 5s linear forwards;
-}
-
-.animate-truck {
-    display: block !important;
-    animation: driveAcross 4s linear forwards;
-}
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<a href="https://wa.me/919877689137?text=Hi!" 
-       target="_blank" 
-       class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-90 animate-bounce-slow"
-       title="Contact us on WhatsApp">
-        <i class="fab fa-whatsapp text-4xl"></i>
-        <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span>
-    </a>
 
-    <style>
-        /* Custom Animation for a gentle 'popping' float */
-        @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .animate-bounce-slow {
-            animation: bounce-slow 3s infinite ease-in-out;
-        }
-    </style>
 <body class="bg-slate-50">
+
+    <a href="https://wa.me/919877689137?text=Hi!" 
+        target="_blank" 
+        class="fixed bottom-8 right-8 z-[100] bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform active:scale-90 animate-bounce-slow"
+        title="Contact us on WhatsApp">
+            <i class="fab fa-whatsapp text-4xl"></i>
+            <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-75 animate-ping -z-10"></span>
+    </a>
 
     <nav class="fixed w-full z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto glass-nav rounded-2xl px-8 py-4 flex justify-between items-center shadow-soft border border-white">
             <div class="flex items-center z-[10]">
-                <img src="logorm.png" alt="PackUp Express" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-105">
+                <img src="images/logorm.png" alt="PackUp Express" class="h-20 w-auto object-contain transition-transform duration-300 hover:scale-105">
             </div>
             <div class="hidden lg:flex space-x-10 font-bold text-slate-800">
                 <a href="#home" class="hover:text-orange transition">Home</a>
@@ -66,12 +37,37 @@
                    class="text-[#FF0000] hover:text-[#D90000] transition-transform transform hover:scale-125 text-4xl">
                     <i class="fab fa-youtube"></i>
                 </a>
-                <button class="bg-navy text-white px-8 py-3 rounded-xl font-extrabold hover:bg-orange transition-colors">
+                <a href="#home" class="bg-navy text-white px-8 py-3 rounded-xl font-extrabold hover:bg-orange transition-colors">
                    Start Moving
-                </button>
+                </a>
             </div>
         </div>
     </nav>
+
+    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden bg-[#0A1128]">
+        <div class="absolute inset-0 z-0">
+            <img src="images/about2.png" alt="Packers and Movers background" 
+                 class="absolute top-[15%] left-[10%] w-full h-full object-cover object-center scale-125">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#0A1128]/95 via-[#0A1128]/80 to-[#0A1128]/40"></div>
+        </div>
+      
+        <div class="relative z-10 container mx-auto text-center md:text-left mt-60">
+            <div class="max-w-4xl">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tight">
+                    Movers <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">And Packaging.</span>
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl mt-6 max-w-xl leading-relaxed">
+                    Professional packing and stress-free moving services across the country. 
+                    <span class="text-orange-400 font-semibold">Reliable. Safe. Fast.</span>
+                </p>
+                <div class="mt-10">
+                    <a href="#home" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-full transition-all transform hover:-translate-y-1 shadow-lg text-lg">
+                        Get a Free Quote →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="home" class="pt-40 pb-20 px-6 bg-white">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
@@ -97,7 +93,7 @@
                 </form>
             </div>
             <div>
-                <img src="handshake.png" class="rounded-[2.5rem] shadow-2xl">
+                <img src="images/handshake.png" class="rounded-[2.5rem] shadow-2xl">
             </div>
         </div>
     </section>
@@ -184,7 +180,7 @@
                 </div>
             </div>
             <div class="lg:w-1/2 relative group">
-                <img src="about.png" alt="PackUp Express" class="rounded-[3rem] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+                <img src="images/about.png" alt="PackUp Express" class="rounded-[3rem] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
                 <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-orange/10 rounded-full -z-10 blur-2xl"></div>
             </div>
         </div>
@@ -207,8 +203,6 @@
             </div>
         </div>
     </section>
-    
-    <!-- <script src="script.js"></script> -->
 
     <section id="help" class="py-24 px-6 bg-white">
         <div class="max-w-4xl mx-auto">
@@ -257,9 +251,9 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-20 gap-8">
                 <h2 class="text-4xl font-bold">Ready to Make Your Move?</h2>
-                <button class="bg-slate-500/30 border border-white/20 text-white px-10 py-4 rounded-xl font-bold hover:bg-white hover:text-navy transition">
+                <a href="#home" class="bg-slate-500/30 border border-white/20 text-white px-10 py-4 rounded-xl font-bold hover:bg-white hover:text-navy transition">
                     Contact Us Now
-                </button>
+                </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-t border-white/10 pt-16">
                 <div>
