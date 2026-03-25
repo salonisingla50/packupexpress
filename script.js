@@ -151,3 +151,20 @@ if (form) {
         });
     });
 }
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('close-menu');
+    const links = document.querySelectorAll('.mobile-link');
+
+    // Open Menu
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-full');
+    });
+
+    // Close Menu
+    const hideMenu = () => {
+        mobileMenu.classList.add('translate-x-full');
+    };
+
+    closeBtn.addEventListener('click', hideMenu);
+    links.forEach(link => link.addEventListener('click', hideMenu));
