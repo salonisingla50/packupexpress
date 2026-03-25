@@ -1,72 +1,77 @@
-:root { 
-    --navy: #1B365D; 
-    --orange: #F38B3C; 
+/* --- 1. CORE VARIABLES & THEME --- */
+:root {
+  --navy: #0A1128;
+  --orange: #F38B3C;
 }
 
-body { 
-    font-family: 'Plus Jakarta Sans', sans-serif; 
-    scroll-behavior: smooth; 
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-/* Custom Colors */
-.text-navy { color: var(--navy); }
-.bg-navy { background-color: var(--navy); }
-.text-orange { color: var(--orange); }
-.bg-orange { background-color: var(--orange); }
+/* --- 2. CUSTOM COLORS (FOR CDN SUPPORT) --- */
+.bg-navy { background-color: var(--navy) !important; }
+.text-navy { color: var(--navy) !important; }
+.text-orange { color: var(--orange) !important; }
+.bg-orange { background-color: var(--orange) !important; }
 
-/* Navigation Glassmorphism */
-.glass-nav { 
-    background: rgba(255, 255, 255, 0.8); 
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px); 
+/* Border and Focus Helpers */
+.border-orange { border-color: var(--orange) !important; }
+.focus\:border-orange:focus { border-color: var(--orange) !important; }
+.hover\:text-orange:hover { color: var(--orange) !important; }
+.hover\:bg-orange:hover { background-color: var(--orange) !important; }
+
+/* --- 3. UI COMPONENTS --- */
+
+/* Glass Navigation Effect */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-/* Hover Effects */
-.service-card:hover, .blog-card:hover { 
-    transform: translateY(-10px); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05); 
+.shadow-soft {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.shadow-soft { 
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); 
+/* --- 4. MOBILE MENU LOGIC --- */
+
+/* This makes the menu slide in when JS adds the .active class */
+#mobile-menu.active {
+  transform: translateX(0) !important;
 }
 
-/* WhatsApp Floating Animation */
+/* This shows the background blur when the menu is open */
+#menu-overlay.active {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+/* --- 5. ANIMATIONS --- */
+
+/* Floating Truck Animation (Applied to your service image) */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+.animate-float {
+  display: inline-block;
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Slow Bounce for WhatsApp & Navigation */
 @keyframes bounce-slow {
   0%, 100% { transform: translateY(-8px); }
   50% { transform: translateY(0); }
 }
-
 .animate-bounce-slow {
   animation: bounce-slow 3s ease-in-out infinite;
 }
 
-/* Truck Animation Logic (Currently Unused in HTML) */
-@keyframes drive-by {
-    0% { transform: translateX(-150%) scaleX(1); }
-    50% { transform: translateX(0%) scaleX(1); }
-    100% { transform: translateX(150%) scaleX(1); }
-}
-
-.hero-truck-bg {
-    position: absolute;
-    top: 40%;
-    left: 0;
-    width: 100%;
-    font-size: 8rem;
-    opacity: 0.05;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: -1;
-    animation: drive-by 15s linear infinite;
-}
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
-}
-.animate-float {
-    display: inline-block; 
-    animation: float 4s ease-in-out infinite;
-    will-change: transform;
+/* Card Hover effect for Services/Blog */
+.service-card:hover, .blog-card:hover {
+  transform: translateY(-8px);
+  transition: transform 0.3s ease;
 }

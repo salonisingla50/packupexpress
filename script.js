@@ -151,20 +151,36 @@ if (form) {
         });
     });
 }
-    const menuBtn = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const closeBtn = document.getElementById('close-menu');
-    const links = document.querySelectorAll('.mobile-link');
-
-    // Open Menu
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('translate-x-full');
+   document.addEventListener('DOMContentLoaded', () => {
+        // Mobile Menu Elements
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const closeBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('menu-overlay');
+    
+        // Function to Toggle Menu
+        const toggleMenu = () => {
+            mobileMenu.classList.toggle('active');
+            // Toggle 'hidden' for Tailwind and 'active' for our custom CSS
+            overlay.classList.toggle('hidden');
+            overlay.classList.toggle('active');
+            
+            // Prevent background scrolling when menu is open
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        };
+    
+        // Event Listeners
+        if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+        if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+        if (overlay) overlay.addEventListener('click', toggleMenu);
+    
+        // Close menu when clicking a link
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
     });
-
-    // Close Menu
-    const hideMenu = () => {
-        mobileMenu.classList.add('translate-x-full');
-    };
-
-    closeBtn.addEventListener('click', hideMenu);
-    links.forEach(link => link.addEventListener('click', hideMenu));
