@@ -110,6 +110,33 @@ function closeBlog() {
     document.body.style.overflow = 'auto';
 }
 
+/* --- MOBILE MENU LOGIC --- */
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('menu-overlay');
+    
+    // Check if menu is currently open by looking at the transform style
+    if (menu.style.transform === 'translateX(0%)') {
+        // CLOSE MENU
+        menu.style.transform = 'translateX(100%)';
+        overlay.style.opacity = '0';
+        // Wait for animation to finish before hiding overlay display
+        setTimeout(() => { 
+            overlay.style.display = 'none'; 
+        }, 300);
+        document.body.style.overflow = ''; // Re-enable scrolling
+    } else {
+        // OPEN MENU
+        overlay.style.display = 'block';
+        // Small delay to allow 'display: block' to register so opacity transition works
+        setTimeout(() => { 
+            overlay.style.opacity = '1'; 
+            menu.style.transform = 'translateX(0%)';
+        }, 10);
+        document.body.style.overflow = 'hidden'; // Stop background scrolling
+    }
+}
+
 // Start the engine
 window.addEventListener('DOMContentLoaded', init);
 
@@ -150,30 +177,4 @@ if (form) {
             submitBtn.innerText = "Try Again";
         });
     });
-}
-/* --- MOBILE MENU LOGIC --- */
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('menu-overlay');
-    
-    // Check if menu is currently open by looking at the transform style
-    if (menu.style.transform === 'translateX(0%)') {
-        // CLOSE MENU
-        menu.style.transform = 'translateX(100%)';
-        overlay.style.opacity = '0';
-        // Wait for animation to finish before hiding overlay display
-        setTimeout(() => { 
-            overlay.style.display = 'none'; 
-        }, 300);
-        document.body.style.overflow = ''; // Re-enable scrolling
-    } else {
-        // OPEN MENU
-        overlay.style.display = 'block';
-        // Small delay to allow 'display: block' to register so opacity transition works
-        setTimeout(() => { 
-            overlay.style.opacity = '1'; 
-            menu.style.transform = 'translateX(0%)';
-        }, 10);
-        document.body.style.overflow = 'hidden'; // Stop background scrolling
-    }
 }
