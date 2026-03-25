@@ -26,14 +26,37 @@ body {
 
 .shadow-soft { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
 
-/* --- Mobile Menu Logic --- */
-#mobile-menu.active {
-  transform: translateX(0) !important;
+/* ---  Mobile Menu Logic --- */
+#mobile-menu {
+  /* Direct placement and hidden state */
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: translateX(100%); /* Initial hidden state */
+  transition: transform 0.3s ease-in-out;
+  z-index: 120;
+  will-change: transform;
 }
 
-#menu-overlay.active {
-  opacity: 1 !important;
-  pointer-events: auto !important;
+#menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 115;
+  display: none; /* JS will change this to 'block' */
+  opacity: 0;    /* JS will change this to '1' */
+  transition: opacity 0.3s ease;
+}
+
+/* Ensure glass-nav has a subtle border for contrast on mobile */
+.glass-nav {
+background: rgba(255, 255, 255, 0.85) !important;
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(255, 255, 255, 0.3) !important;
 }
 
 /* --- Animations --- */
