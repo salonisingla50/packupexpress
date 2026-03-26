@@ -110,7 +110,7 @@ function closeBlog() {
     document.body.style.overflow = 'auto';
 }
 
-/* --- MOBILE MENU LOGIC --- */
+// 6. MOBILE MENU LOGIC 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const overlay = document.getElementById('menu-overlay');
@@ -137,7 +137,102 @@ function toggleMobileMenu() {
     }
 }
 
-// Start the engine
+// 7. Branch Section
+const branches = [
+    { city: "Mumbai", lat: 19.0760, lng: 72.8777 },
+    { city: "Delhi NCR", lat: 28.6139, lng: 77.2090 },
+    { city: "Bangalore", lat: 12.9716, lng: 77.5946 },
+    { city: "Pune", lat: 18.5204, lng: 73.8567 },
+    { city: "Chennai", lat: 13.0827, lng: 80.2707 },
+    { city: "Hyderabad", lat: 17.3850, lng: 78.4867 },
+    { city: "Kolkata", lat: 22.5726, lng: 88.3639 },
+    { city: "Ahmedabad", lat: 23.0225, lng: 72.5714 },
+    { city: "Jaipur", lat: 26.9124, lng: 75.7873 },
+    { city: "Lucknow", lat: 26.8467, lng: 80.9462 },
+    { city: "Surat", lat: 21.1702, lng: 72.8311 },
+    { city: "Nagpur", lat: 21.1458, lng: 79.0882 },
+    { city: "Indore", lat: 22.7196, lng: 75.8577 },
+    { city: "Bhopal", lat: 23.2599, lng: 77.4126 },
+    { city: "Visakhapatnam", lat: 17.6868, lng: 83.2185 },
+    { city: "Patna", lat: 25.5941, lng: 85.1376 },
+    { city: "Vadodara", lat: 22.3072, lng: 73.1812 },
+    { city: "Ludhiana", lat: 30.9010, lng: 75.8573 },
+    { city: "Agra", lat: 27.1767, lng: 78.0081 },
+    { city: "Nashik", lat: 19.9975, lng: 73.7898 },
+    { city: "Goa", lat: 15.2993, lng: 74.1240 },
+    { city: "Guwahati", lat: 26.1445, lng: 91.7362 },
+    { city: "Chandigarh", lat: 30.7333, lng: 76.7794 },
+    { city: "Bhubaneswar", lat: 20.2961, lng: 85.8245 },
+    { city: "Dehradun", lat: 30.3165, lng: 78.0322 }
+];
+
+const extraCities = [
+    "Ajmer", "Aligarh", "Asansol", "Bareilly", "Bhagalpur", "Bharatpur", "Bharuch", "Bhilwara", 
+    "Bhiwadi", "Bikaner", "Bilaspur", "Bokaro", "Buldhana", "Burhanpur", "Chhindwara", "Cochin", 
+    "Coimbatore", "Davangere", "Dhanbad", "Dhuliya", "Durgapur", "Faridabad", "Gandhidham", 
+    "Gorakhpur", "Guna", "Gwalior", "Hazaribagh", "Haldwani", "Haridwar", "Hisar", "Hubli", 
+    "Jabalpur", "Jalgaon", "Jammu", "Jamnagar", "Jamshedpur", "Jhansi", "Jodhpur", "Kakinada", 
+    "Kanpur", "Kolhapur", "Korba", "Kota", "Kotma", "Mathura", "Meerut", "Nanded", "Noida", 
+    "Panipat", "Pondicherry", "Prayagraj", "Raigarh", "Raipur", "Rajahmundry", "Rajkot", 
+    "Ranchi", "Rourkela", "Sagar", "Saharanpur", "Salem", "Sangli", "Satna", "Shivamogga", 
+    "Siliguri", "Solapur", "Sonebhadra", "Udaipur", "Ujjain", "Valsad", "Varanasi"
+];
+
+window.addEventListener('DOMContentLoaded', () => {
+    // A. Initialize Map
+    const map = L.map('map').setView([20.5937, 78.9629], 5);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const listContainer = document.getElementById('branchList');
+    const searchInput = document.getElementById('branchSearch');
+    const markers = {};
+
+    // B. Place Markers for Geopoint Cities
+    branches.forEach(branch => {
+        const marker = L.marker([branch.lat, branch.lng]).addTo(map);
+        marker.bindPopup(`<b>${branch.city} Branch</b><br>PackUp Express Hub`);
+        markers[branch.city] = marker; // Store marker to trigger it later
+    });
+
+    // C. Combined Search & List Function
+    function updateBranchDisplay(filter = "") {
+        listContainer.innerHTML = "";
+        
+        // Combine all cities for the list
+        const allCities = [...branches.map(b => b.city), ...extraCities].sort();
+        const filtered = allCities.filter(city => city.toLowerCase().includes(filter.toLowerCase()));
+
+        filtered.forEach(city => {
+            const item = document.createElement('div');
+            item.className = "p-3 mb-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-orange/20 hover:border-orange/50 transition-all cursor-pointer flex items-center gap-3";
+            item.innerHTML = `<i class="fas fa-location-dot text-orange"></i><span>${city}</span>`;
+            
+            item.onclick = () => {
+                // If city has coordinates, fly to it on the map
+                const geoData = branches.find(b => b.city === city);
+                if (geoData) {
+                    map.flyTo([geoData.lat, geoData.lng], 10);
+                    markers[city].openPopup();
+                } else {
+                    // If no geo data, just scroll to contact
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+            listContainer.appendChild(item);
+        });
+    }
+
+    // D. Event Listeners
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => updateBranchDisplay(e.target.value));
+    }
+    
+    updateBranchDisplay(); // Initial Load
+});
+
+// 8. Start the engine
 window.addEventListener('DOMContentLoaded', init);
 
 if (form) {
@@ -160,7 +255,7 @@ if (form) {
             const from = encodeURIComponent(form.from.value);
             const to = encodeURIComponent(form.to.value);
             
-            const whatsappNumber = "919877689137";
+            const whatsappNumber = "919327451665";
             const message = `Hi team!%0AName: ${name}%0APhone: ${phone}%0AMoving From: ${from}%0AMoving To: ${to}`;
             
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
