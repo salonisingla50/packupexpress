@@ -6,7 +6,7 @@ const sheetId = '1vXFSaq1xQIng77Kfzyvd4Z6RpQdZuYDQ6buil-NvxrA';
 const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
 let allBlogs = [];
 
-// 2. FETCH DATA FROM GOOGLE
+// 2. FETCH DATA FROM GOOGLE FOR BLOGS
 async function init() {
     try {
         const res = await fetch(base);
@@ -243,12 +243,14 @@ if (form) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner animate-spin mr-2"></i> Processing...';
 
-        // SEND DATA TO GOOGLE SHEETS & GMAIL
-        fetch(scriptURL, { 
+        // 2. SEND DATA TO YOUR HOSTINGER SERVER (process.php)
+        // save to leads.csv and email support@packupexpress.com
+        fetch('process.php', { 
             method: 'POST', 
             body: new FormData(form)
         })
-        .then(response => {
+        .then(response => response.text())
+        .then(data => {
             // TRIGGER WHATSAPP REDIRECT
             const name = encodeURIComponent(form.name.value);
             const phone = encodeURIComponent(form.phone.value);
@@ -256,11 +258,11 @@ if (form) {
             const to = encodeURIComponent(form.to.value);
             
             const whatsappNumber = "919327451665";
-            const message = `Hi team!%0AName: ${name}%0APhone: ${phone}%0AMoving From: ${from}%0AMoving To: ${to}`;
+            const message = `Hi team!%0A*New Quote Request*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Moving From:* ${from}%0A*Moving To:* ${to}`;
             
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
 
-            alert("Success! Your request is recorded. Redirecting to WhatsApp...");
+            alert("Success! Your request is recorded and we are opening WhatsApp for you.");
             form.reset();
             submitBtn.disabled = false;
             submitBtn.innerText = "Request a Quote";
