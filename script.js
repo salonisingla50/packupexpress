@@ -1,12 +1,12 @@
 // script.js PackUp Express Logic
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw9mtTBxAnNGufGoPFnV9ucoRHgcMHIrWSPLiW2vaw_VQ0Zm4qBczYF7HjRicvCIeLf/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbytp7TPTjPrrcc0n4odjgS51dmxBG0WXAt-8Hb4-cCIbN3wCTH3HvmT5MCjsWxFj349Zw/exec';
 const form = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
-const sheetId = '1vXFSaq1xQIng77Kfzyvd4Z6RpQdZuYDQ6buil-NvxrA';
+const sheetId = '10kAq-9mFt-8UhtF1R68wKWwr_QEYIgyOwaOUAh0sjpM';
 const base = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
 let allBlogs = [];
 
-// 2. FETCH DATA FROM GOOGLE FOR BLOGS
+// 2. FETCH DATA FROM GOOGLE
 async function init() {
     try {
         const res = await fetch(base);
@@ -44,7 +44,7 @@ function render() {
     // Full Blog Page Logic (blogs.html)
     if (fullGrid) {
         displayFullList(allBlogs);
-        
+
         // Search Logic
         document.getElementById('blogSearch').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
@@ -96,7 +96,7 @@ function openBlog(id) {
     document.getElementById('modalImg').src = blog.img;
     document.getElementById('modalCategory').innerText = blog.category;
     document.getElementById('modalTitle').innerText = blog.title;
-    
+
     // Convert Alt+Enter from Excel into Paragraphs
     const formattedBody = blog.desc.split('\n').map(p => `<p>${p}</p>`).join('');
     document.getElementById('modalBody').innerHTML = formattedBody;
@@ -114,7 +114,7 @@ function closeBlog() {
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const overlay = document.getElementById('menu-overlay');
-    
+
     // Check if menu is currently open by looking at the transform style
     if (menu.style.transform === 'translateX(0%)') {
         // CLOSE MENU
@@ -199,7 +199,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // C. Combined Search & List Function
     function updateBranchDisplay(filter = "") {
         listContainer.innerHTML = "";
-        
+
         // Combine all cities for the list
         const allCities = [...branches.map(b => b.city), ...extraCities].sort();
         const filtered = allCities.filter(city => city.toLowerCase().includes(filter.toLowerCase()));
@@ -208,7 +208,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const item = document.createElement('div');
             item.className = "p-3 mb-2 rounded-xl bg-white/5 border border-white/10 text-white text-sm hover:bg-orange/20 hover:border-orange/50 transition-all cursor-pointer flex items-center gap-3";
             item.innerHTML = `<i class="fas fa-location-dot text-orange"></i><span>${city}</span>`;
-            
+
             item.onclick = () => {
                 // If city has coordinates, fly to it on the map
                 const geoData = branches.find(b => b.city === city);
@@ -228,7 +228,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('input', (e) => updateBranchDisplay(e.target.value));
     }
-    
+
     updateBranchDisplay(); // Initial Load
 });
 
@@ -238,28 +238,26 @@ window.addEventListener('DOMContentLoaded', init);
 if (form) {
     form.addEventListener('submit', e => {
         e.preventDefault();
-        
+
         // UI Feedback
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner animate-spin mr-2"></i> Processing...';
 
-        // 2. SEND DATA TO YOUR HOSTINGER SERVER (process.php)
-        // save to leads.csv and email support@packupexpress.com
-        fetch('process.php', { 
+        // SEND DATA TO GOOGLE SHEETS & GMAIL
+        fetch(scriptURL, { 
             method: 'POST', 
             body: new FormData(form)
         })
-        .then(response => response.text())
-        .then(data => {
+        .then(response => {
             // TRIGGER WHATSAPP REDIRECT
             const name = encodeURIComponent(form.name.value);
             const phone = encodeURIComponent(form.phone.value);
             const from = encodeURIComponent(form.from.value);
             const to = encodeURIComponent(form.to.value);
-            
+
             const whatsappNumber = "919327451665";
-            const message = `Hi team!%0A*New Quote Request*%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Moving From:* ${from}%0A*Moving To:* ${to}`;
-            
+            const message = `Hi team!%0AName: ${name}%0APhone: ${phone}%0AMoving From: ${from}%0AMoving To: ${to}`;
+
             window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
 
             alert("Success! Your request is recorded and we are opening WhatsApp for you.");
